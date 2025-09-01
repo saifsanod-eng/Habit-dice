@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دائرة الألوان + النرد</title>
+<style>
+body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+.circle { width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; position: relative; }
+.segment { position: absolute; width: 50%; height: 50%; top: 0; left: 50%; transform-origin: 0% 100%; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+#result { margin-top: 20px; font-size: 24px; font-weight: bold; }
+button { padding: 10px 20px; font-size: 18px; margin: 10px; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>اختر لونك ورمي النرد</h1>
+<div class="circle" id="colorWheel"></div>
+<button onclick="spinWheel()">دور العجلة</button>
+<button onclick="rollDice()">ارمِ النرد</button>
+<div id="result">النتيجة ستظهر هنا</div>
+
+<script>
+const colors = ['#FF0000','#FFA500','#FFFF00','#008000','#0000FF','#4B0082','#EE82EE','#00FFFF','#FFC0CB','#A52A2A'];
+const pagesPerColor = 6;
+let selectedColorIndex = null;
+
+// رسم الدائرة
+const wheel = document.getElementById('colorWheel');
+colors.forEach((color, i) => {
+  const segment = document.createElement('div');
+  segment.className = 'segment';
+  segment.style.background = color;
+  segment.style.transform = `rotate(${i*36}deg)`;
+  wheel.appendChild(segment);
+});
+
+function spinWheel() {
+  selectedColorIndex = Math.floor(Math.random() * colors.length);
+  document.getElementById('result').innerText = `اللون المختار: ${colors[selectedColorIndex]}`;
+}
+
+function rollDice() {
+  if (selectedColorIndex === null) {
+    alert('رجاءً اختر اللون أولاً!');
+    return;
+  }
+  const dice = Math.floor(Math.random() * pagesPerColor) + 1;
+  document.getElementById('result').innerText = `اللون: ${colors[selectedColorIndex]} | رقم الصفحة: ${dice}`;
+}
+</script>
+</body>
+</html>
