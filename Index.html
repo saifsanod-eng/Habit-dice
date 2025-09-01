@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دائرة الألوان + النرد</title>
+<title>دائرة العادات + النرد</title>
 <style>
 body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
 .circle { width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; position: relative; }
@@ -13,18 +13,17 @@ button { padding: 10px 20px; font-size: 18px; margin: 10px; cursor: pointer; }
 </style>
 </head>
 <body>
-<h1>اختر لونك ورمي النرد</h1>
+<h1>اختر لونك وارمي النرد</h1>
 <div class="circle" id="colorWheel"></div>
 <button onclick="spinWheel()">دور العجلة</button>
 <button onclick="rollDice()">ارمِ النرد</button>
 <div id="result">النتيجة ستظهر هنا</div>
 
 <script>
-const colors = ['#FF0000','#FFA500','#FFFF00','#008000','#0000FF','#4B0082','#EE82EE','#00FFFF','#FFC0CB','#A52A2A'];
+const colors = ['#FF0000','#FFA500','#FFFF00','#008000','#0000FF','#4B0082','#EE82EE','#00FFFF','#A52A2A','#000000'];
 const pagesPerColor = 6;
 let selectedColorIndex = null;
 
-// رسم الدائرة
 const wheel = document.getElementById('colorWheel');
 colors.forEach((color, i) => {
   const segment = document.createElement('div');
